@@ -1,8 +1,11 @@
 ---
 title: "Final Project"
 subtitle: "Data Science for Biologists, Spring 2021"
-author: "Your name goes here"
-output: html_document
+author: "Lucy Lithgow"
+output: 
+  html_document:
+    theme: cerulean
+    highlight: haddock
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,14 +15,20 @@ editor_options:
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE, include = TRUE)
 
 # Load all libraries you use HERE:
+library(tidyverse)
 ```
 
 <br><br>
 
 ## Introduction
 
-```{r read-examine-data}
+[Fast food calories dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-09-04/fastfood_calories.csv):
+The fast food dataset includes 8 unique fast food restaurants and information on their menu items including calories, sodium, fat, sugar, protein and more. I selected this dataset because it has a lot of information to work with and it will be interesting to compare the nutrition facts from different popular fast food chains, or compare the menu items from within the same restaurant.
 
+```{r read-examine-data}
+fastfood <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-09-04/fastfood_calories.csv')
+
+glimpse(fastfood)
 ```
 
 <br><br>
