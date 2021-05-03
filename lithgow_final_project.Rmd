@@ -100,13 +100,32 @@ The Whopper with cheese from Burger King is highest in calories compared to othe
 
 ## Question 3
 
-#### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
+#### Which restaurant has the lowest average trans fat per menu item?
 
 ### Methods
+```{r}
+fastfood %>%
+  group_by(restaurant) %>%
+  summarise(mean_transfat = mean(trans_fat)) %>%
+  ggplot() +
+  aes(x = reorder(restaurant, -mean_transfat),
+      y = mean_transfat,
+      fill = restaurant) +
+  geom_col() +
+  geom_text(aes(label = round(mean_transfat, digits = 2),
+                y = mean_transfat + .03)) +
+  theme_bw() +
+  labs(x = "Restaurant",
+       y = "Average trans fats") +
+  scale_color_brewer() +
+  theme(legend.position = "none")
+
+
+```
 
 ### Answer
 
-Replace this text with your answer to your question.
+Chick Fil-A's menu items on average have the lowest trans fats.
 
 
 <br><br>
