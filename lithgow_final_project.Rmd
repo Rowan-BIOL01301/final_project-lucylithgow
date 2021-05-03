@@ -57,9 +57,9 @@ fastfood %>%
 
 ```
 
-### The McDonald's menu contains the items with the highest average calories.
+### Answer
 
-Replace this text with your answer to your question.
+The McDonald's menu contains the items with the highest average calories.
 
 
 <br><br>
