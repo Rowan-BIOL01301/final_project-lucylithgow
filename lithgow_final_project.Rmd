@@ -35,11 +35,29 @@ glimpse(fastfood)
 
 ## Question 1
 
-#### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
+#### Which fast food restaurant has the highest average calories per menu item?
 
 ### Methods
+```{r}
+fastfood %>%
+  group_by(restaurant) %>%
+  summarise(mean_calories = mean(calories)) %>%
+  ggplot() +
+  aes(x = restaurant,
+      y = mean_calories,
+      fill = restaurant) +
+  geom_col() +
+  geom_text(aes(label = round(mean_calories, digits = 2),
+                y = mean_calories +20), check_overlap = T) +
+  theme_bw() +
+  labs(x = "Restaurant",
+       y = "Average calories") +
+  scale_color_brewer() +
+  theme(legend.position = "none")
 
-### Answer
+```
+
+### The McDonald's menu contains the items with the highest average calories.
 
 Replace this text with your answer to your question.
 
