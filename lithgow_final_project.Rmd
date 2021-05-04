@@ -136,24 +136,27 @@ Chick Fil-A's menu items on average have the lowest trans fats.
 
 ### Methods
 ```{r question 4 violin}
+#filter to select only Mcdonalds and Chick Fil A
 fastfood %>%
   filter(restaurant %in% c("Mcdonalds", "Chick Fil-A")) -> restaurants
 
+#filter to select the chicken menu items
 restaurants %>%
   filter(X1 %in% c(1,4,5, 8, 13, 14, 18, 19, 20, 24, 25, 26, 27, 30, 31, 33:82)) -> justchicken
 
+
 justchicken %>%
-  ggplot() +
+  ggplot() + #plot
   aes(x = restaurant,
       y = protein,
-      fill = restaurant) +
-  geom_violin() +
-  scale_fill_manual(values = alpha(c("blue", "gold"), .3)) +
-  stat_summary(fun = mean, geom ="point", shape=23, size=3) +
-  theme_linedraw() +
+      fill = restaurant) + #assign x and y axis, map fill to restaurant
+  geom_violin() + #violin plot
+  scale_fill_manual(values = alpha(c("blue", "gold"), .3)) + #set manual colors for fill
+  stat_summary(fun = mean, geom ="point", shape=23, size=3) + #display mean in plot
+  theme_linedraw() + #set theme
   labs(x = "Restaurant",
-       y = "Protein") +
-  theme(legend.position = "none")
+       y = "Protein") + #rename x and y axis
+  theme(legend.position = "none") #remove legend
 
 ```
 
