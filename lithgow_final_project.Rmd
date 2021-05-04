@@ -38,7 +38,7 @@ glimpse(fastfood)
 #### Which fast food restaurant has the highest average calories per menu item?
 
 ### Methods
-```{r}
+```{r question 1 histogram}
 fastfood %>%
   group_by(restaurant) %>%
   summarise(mean_calories = mean(calories)) %>%
@@ -69,7 +69,7 @@ The McDonald's menu contains the items with the highest average calories.
 #### Which fast food signature sandwhich is highest in calories?
 
 ### Methods
-```{r}
+```{r question 2 lollipop}
 fastfood %>%
   filter(item %in% c("Big Mac", "Chicken Sandwich", "Sonic Cheeseburger W/ Ketchup", "Classic Roast Beef", "WHOPPER w/ Cheese", "Original Cheeseburger")) %>%
   ggplot() +
@@ -103,7 +103,7 @@ The Whopper with cheese from Burger King is highest in calories compared to othe
 #### Which restaurant has the lowest average trans fat per menu item?
 
 ### Methods
-```{r}
+```{r question 3 histogram}
 fastfood %>%
   group_by(restaurant) %>%
   summarise(mean_transfat = mean(trans_fat)) %>%
@@ -135,7 +135,7 @@ Chick Fil-A's menu items on average have the lowest trans fats.
 #### Which restaurant's chicken menu items are a better source of protein, Mcdonald's or Chick Fil-A?
 
 ### Methods
-```{r}
+```{r question 4 violin}
 fastfood %>%
   filter(restaurant %in% c("Mcdonalds", "Chick Fil-A")) -> restaurants
 
