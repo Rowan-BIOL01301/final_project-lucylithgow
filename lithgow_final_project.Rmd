@@ -105,20 +105,20 @@ The Whopper with cheese from Burger King is highest in calories compared to othe
 ### Methods
 ```{r question 3 histogram}
 fastfood %>%
-  group_by(restaurant) %>%
-  summarise(mean_transfat = mean(trans_fat)) %>%
-  ggplot() +
-  aes(x = reorder(restaurant, -mean_transfat),
+  group_by(restaurant) %>% #add grouping
+  summarise(mean_transfat = mean(trans_fat)) %>% #find mean trans fats
+  ggplot() + #plot
+  aes(x = reorder(restaurant, -mean_transfat), #assign x and y axis, order descending
       y = mean_transfat,
-      fill = restaurant) +
-  geom_col() +
+      fill = restaurant) + #map fill to restaurant
+  geom_col() + #histogram
   geom_text(aes(label = round(mean_transfat, digits = 2),
-                y = mean_transfat + .03)) +
-  theme_bw() +
+                y = mean_transfat + .03)) + #add mean label, rounding, and move to avoid overlap
+  theme_bw() + #set theme
   labs(x = "Restaurant",
-       y = "Average trans fats") +
-  scale_color_brewer() +
-  theme(legend.position = "none")
+       y = "Average trans fats") + #rename axis labels
+  scale_color_brewer() + #set color scheme
+  theme(legend.position = "none") #remove legend
 
 
 ```
