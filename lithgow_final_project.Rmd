@@ -40,20 +40,20 @@ glimpse(fastfood)
 ### Methods
 ```{r question 1 histogram}
 fastfood %>%
-  group_by(restaurant) %>%
-  summarise(mean_calories = mean(calories)) %>%
+  group_by(restaurant) %>% #add grouping
+  summarise(mean_calories = mean(calories)) %>% #find mean calories per restaurant
   ggplot() +
-  aes(x = restaurant,
-      y = mean_calories,
-      fill = restaurant) +
-  geom_col() +
-  geom_text(aes(label = round(mean_calories, digits = 2),
-                y = mean_calories +20), check_overlap = T) +
-  theme_bw() +
+  aes(x = restaurant, #restaurant on x axis
+      y = mean_calories, #mean calories on y axis
+      fill = restaurant) + #map restaurant to fill
+  geom_col() + #histogram
+  geom_text(aes(label = round(mean_calories, digits = 2), #label each mean calories and round
+                y = mean_calories +20), check_overlap = T) + #move label and remove overlap
+  theme_bw() + #set theme
   labs(x = "Restaurant",
-       y = "Average calories") +
-  scale_color_brewer() +
-  theme(legend.position = "none")
+       y = "Average calories") + #rename axis
+  scale_color_brewer() + #set color theme
+  theme(legend.position = "none") #remove legend
 
 ```
 
