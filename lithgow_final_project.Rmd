@@ -71,24 +71,24 @@ The McDonald's menu contains the items with the highest average calories.
 ### Methods
 ```{r question 2 lollipop}
 fastfood %>%
-  filter(item %in% c("Big Mac", "Chicken Sandwich", "Sonic Cheeseburger W/ Ketchup", "Classic Roast Beef", "WHOPPER w/ Cheese", "Original Cheeseburger")) %>%
+  filter(item %in% c("Big Mac", "Chicken Sandwich", "Sonic Cheeseburger W/ Ketchup", "Classic Roast Beef", "WHOPPER w/ Cheese", "Original Cheeseburger")) %>% #filter to choose signature sandwiches
   ggplot() +
-  aes (x = reorder(restaurant, -calories),
+  aes (x = reorder(restaurant, -calories), #set x and y axis, order descending
        y = calories) +
-  geom_point(color = "deeppink") +
-  geom_segment(color = "deeppink",
+  geom_point(color = "deeppink") + #add just a color to point
+  geom_segment(color = "deeppink", #add just a color to line
     aes(x = restaurant,
                y = 0,
                xend = restaurant,
-               yend = calories)) +
-  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
-  scale_color_brewer() +
+               yend = calories)) + #tell lollipop where to start and end
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) + #fix labels to remove overlap
+  scale_color_brewer() + #set color scheme
   geom_text( size = 3,
     aes(label = item,
-            y = calories + 40)) +
-  theme_light() +
+            y = calories + 40)) + #label mean values
+  theme_light() + #set theme
   labs(x = "Restaurant",
-       y = "Calories")
+       y = "Calories") #rename axis titles
   
 ```
 
