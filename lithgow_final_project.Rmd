@@ -132,10 +132,31 @@ Chick Fil-A's menu items on average have the lowest trans fats.
 
 ## Question 4
 
-#### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
+#### Which restaurant's chicken menu items are a better source of protein, Mcdonald's or Chick Fil-A?
 
 ### Methods
+```{r}
+fastfood %>%
+  filter(restaurant %in% c("Mcdonalds", "Chick Fil-A")) -> restaurants
+
+restaurants %>%
+  filter(X1 %in% c(1,4,5, 8, 13, 14, 18, 19, 20, 24, 25, 26, 27, 30, 31, 33:82)) -> justchicken
+
+justchicken %>%
+  ggplot() +
+  aes(x = restaurant,
+      y = protein,
+      fill = restaurant) +
+  geom_violin() +
+  scale_fill_manual(values = alpha(c("blue", "gold"), .3)) +
+  stat_summary(fun = mean, geom ="point", shape=23, size=3) +
+  theme_linedraw() +
+  labs(x = "Restaurant",
+       y = "Protein") +
+  theme(legend.position = "none")
+
+```
 
 ### Answer
 
-Replace this text with your answer to your question.
+The average protein value for chicken based menu items is higher at Mcdonald's compared to Chick Fil-A.
